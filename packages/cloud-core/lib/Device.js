@@ -21,6 +21,18 @@ class Device extends Optional {
         return this._attr.call(this, 'cardno', ...arguments);
     }
 
+    autoCut() {
+        return this._attr.call(this, 'autoCut', ...arguments);
+    }
+
+    online() {
+        return this._attr.call(this, 'online', ...arguments);
+    }
+
+    status() {
+        return this._attr.call(this, 'status', ...arguments);
+    }
+
     voiceType() {
         return this._attr.call(this, 'voiceType', ...arguments);
     }
