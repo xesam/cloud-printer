@@ -1,0 +1,30 @@
+{
+  "name": "@xesam/cloud-node",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "xesam <xesamguo@gmail.com>",
+  "homepage": "https://github.com/xesam/cloud-printer/tree/main/packages/cloud-node#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xesam/cloud-printer.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/cloud-node.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/xesam/cloud-printer/issues"
+  },
+  "dependencies": {
+    "@xesam/cloud-core": "^0.0.1",
+    "axios": "^0.27.2"
+  }
+}

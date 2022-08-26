@@ -1,0 +1,30 @@
+{
+  "name": "cloud-printer",
+  "version": "0.0.1",
+  "description": "cloud printer api",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xesam/cloud-printer.git"
+  },
+  "devDependencies": {
+    "lerna": "^5.4.3",
+    "jest": "^28.1.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xesam/cloud-printer/issues"
+  },
+  "homepage": "https://github.com/xesam/cloud-printer#readme",
+  "workspaces": [
+    "packages/*"
+  ]
+}
