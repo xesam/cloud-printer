@@ -18,5 +18,5 @@ const order = new CloudCore.Order()
 // p.queryPrinter(device, order).then(console.log).catch(console.error);
 // p.printMsgOrder(device, order).then(console.log).catch(console.error);
 // p.clearOrders(device, order).then(console.log).catch(console.error);
-p.queryOrderCount(device, order).then(console.log).catch(console.error);
+// p.queryOrderCount(device, order).then(console.log).catch(console.error);
 // p.queryOrder(order).then(console.log).catch(console.error);

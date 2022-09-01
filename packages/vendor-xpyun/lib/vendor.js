@@ -50,13 +50,25 @@ class Printer extends CloudCore.Printer {
                 });
             }
             return result;
-        })
+        });
     }
 
     deletePrinters(devices) {
-        const snlist = devices.map(device => device.sn());
         return this.request('delPrinters', {
-            snlist: snlist
+            snlist: devices.map(device => device.sn())
+        }).then(data => {
+            const result = {};
+            if (data.success) {
+                result.success = data.success.map(ele => {
+                    return new CloudCore.Device().sn(ele);
+                });
+            }
+            if (data.fail) {
+                result.fail = data.fail.map(ele => {
+                    return new CloudCore.Device().sn(ele);
+                });
+            }
+            return result;
         });
     }
 
@@ -92,6 +104,8 @@ class Printer extends CloudCore.Printer {
             sn: device.sn(),
             voiceType: device.voice(),
             volumeLevel: device.volume()
+        }).then(data => {
+            return device.clone();
         });
     }
 

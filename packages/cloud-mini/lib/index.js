@@ -23,7 +23,6 @@ class Cloud {
         if (type === 'json') {
             return this._service({
                 url: url,
-                params: payload,
                 data: payload,
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8'
