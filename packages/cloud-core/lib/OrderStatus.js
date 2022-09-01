@@ -1,2 +1,2 @@
 exports.PENDING = 0;
-exports.FINISHED = 1;
+exports.DONE = 1;

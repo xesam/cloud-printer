@@ -135,7 +135,7 @@ class Printer extends CloudCore.Printer {
             {method: 'get'}
         ).then(data => {
             return order.clone()
-                .status(data.status ? CloudCore.OrderStatus.FINISHED : CloudCore.OrderStatus.PENDING)
+                .status(data.status ? CloudCore.OrderStatus.DONE : CloudCore.OrderStatus.PENDING)
                 .printTime(data.print_time);
         });
     }

@@ -135,9 +135,7 @@ class Printer extends CloudCore.Printer {
         return this.request('queryOrderState', {
             orderId: order.id()
         }).then(data => {
-            return {
-                data: data
-            };
+            return order.clone().status(data ? CloudCore.OrderStatus.DONE : CloudCore.OrderStatus.PENDING);
         });
     }
 
