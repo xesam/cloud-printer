@@ -20,6 +20,22 @@ class Order extends Optional {
     copies() {
         return this._attr.call(this, 'copies', ...arguments);
     }
+
+    date() {
+        return this._attr.call(this, 'date', ...arguments);
+    }
+
+    status() {
+        return this._attr.call(this, 'status', ...arguments);
+    }
+
+    createTime() {
+        return this._attr.call(this, 'createTime', ...arguments);
+    }
+
+    printTime() {
+        return this._attr.call(this, 'printTime', ...arguments);
+    }
 }
 
 module.exports = Order;

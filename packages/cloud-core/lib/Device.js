@@ -33,12 +33,12 @@ class Device extends Optional {
         return this._attr.call(this, 'status', ...arguments);
     }
 
-    voiceType() {
-        return this._attr.call(this, 'voiceType', ...arguments);
+    voice() {
+        return this._attr.call(this, 'voice', ...arguments);
     }
 
-    volumeLevel() {
-        return this._attr.call(this, 'volumeLevel', ...arguments);
+    volume() {
+        return this._attr.call(this, 'volume', ...arguments);
     }
 }
 

@@ -6,14 +6,17 @@ const authJson = require('./auth.private.json');
 const auth = new CloudCore.Auth(authJson.id, authJson.secret);
 const cloud = new NodeCloud();
 const p = new Printer(auth, cloud);
-const device = {
-    sn: authJson.p_sn,
-    name: '测试'
-}
-const order = {
-    content: '<L>Hello</L>'
-}
-// p.addPrinters([device]).then(console.log).catch(console.error);
+const device = new CloudCore.Device().sn(authJson.p_sn).key(authJson.p_key).name('WH-YK-003');
+const order = new CloudCore.Order()
+    .id('OM22090111343251232226')
+    .date('2022-08-31')
+    .content('<L>Hello</L>');
+
+// p.addPrinters([device]).then(JSON.stringify).then(console.log).catch(console.error);
 // p.deletePrinters([device]).then(console.log).catch(console.error);
-p.queryPrinter(device).then(console.log).catch(console.error);
+// p.updatePrinter(device).then(console.log).catch(console.error);
+// p.queryPrinter(device, order).then(console.log).catch(console.error);
 // p.printMsgOrder(device, order).then(console.log).catch(console.error);
+// p.clearOrders(device, order).then(console.log).catch(console.error);
+// p.queryOrderCount(device, order).then(console.log).catch(console.error);
+p.queryOrder(order).then(console.log).catch(console.error);

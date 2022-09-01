@@ -4,5 +4,4 @@ class CloudError extends Error {
     }
 }
 
-
 exports.CloudError = CloudError;

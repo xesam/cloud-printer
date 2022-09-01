@@ -14,8 +14,26 @@ class Optional {
         }
     }
 
+    error() {
+        return this._attr.call(this, 'error', ...arguments);
+    }
+
+    clone() {
+        const _new = new this.constructor();
+        _new._data = {...this._data};
+        return _new;
+    }
+
     entries() {
         return utils.cloudEntries(this._data);
+    }
+
+    toString() {
+        return this._data;
+    }
+
+    toJSON() {
+        return this._data;
     }
 }
 

@@ -37,12 +37,14 @@ class Printer extends CloudCore.Printer {
         return this.request(
             'add',
             {
-                sn: device.sn,
-                pkey: device.key,
-                name: device.name
+                sn: device.sn(),
+                pkey: device.key(),
+                name: device.name()
             },
             {method: 'post'}
-        );
+        ).then(data => {
+            return {success: [device.clone()]};
+        });
     }
 
     deletePrinters(devices) {
@@ -50,42 +52,57 @@ class Printer extends CloudCore.Printer {
         return this.request(
             'delete',
             {
-                sn: device.sn,
+                sn: device.sn(),
             },
             {method: 'delete'}
-        );
+        ).then(data => {
+            return {success: [device.clone()]};
+        });
     }
 
     updatePrinter(device) {
         return this.request(
             'update',
             {
-                sn: device.sn,
-                name: device.name
+                sn: device.sn(),
+                name: device.name()
             },
             {method: 'patch'}
-        );
+        ).then(data => {
+            return device.clone();
+        });
     }
 
     queryPrinter(device) {
         return this.request(
             'info',
             {
-                sn: device.sn
+                sn: device.sn()
             },
             {method: 'get'}
-        );
+        ).then(data => {
+            return new CloudCore.Device()
+                .sn(data.sn)
+                .name(data.name)
+                .online(data.online === 1)
+                .status(data.status === 0 ? CloudCore.DeviceStatus.NORMAL : CloudCore.DeviceStatus.ANORMAL)
+                .voice(data.voice)
+                .cardno(data.imsi)
+                .autoCut(data.auto_cut);
+        })
     }
 
     settingPrinter(device) {
         return this.request('setting',
             {
-                sn: device.sn,
-                auto_cut: device.auto_cut,
-                voice: device.voice
+                sn: device.sn(),
+                auto_cut: device.auto_cut(),
+                voice: device.voice()
             },
             {method: 'PATCH'}
-        );
+        ).then(data => {
+            return {success: [device.clone()]};
+        });
     }
 
     /**
@@ -94,12 +111,14 @@ class Printer extends CloudCore.Printer {
     printMsgOrder(device, order) {
         return this.request('print',
             {
-                sn: device.sn,
-                content: order.content,
-                times: order.times
+                sn: device.sn(),
+                content: order.content(),
+                times: order.copies()
             },
             {method: 'post'}
-        );
+        ).then(data => {
+            return order.clone().id(data.id).createTime(data.create_time);
+        });
     }
 
     printLabelOrder(device, order) {
@@ -111,29 +130,45 @@ class Printer extends CloudCore.Printer {
     queryOrder(order) {
         return this.request('order/status',
             {
-                id: order.id
+                id: order.id()
             },
             {method: 'get'}
-        );
+        ).then(data => {
+            return order.clone()
+                .status(data.status ? CloudCore.OrderStatus.FINISHED : CloudCore.OrderStatus.PENDING)
+                .printTime(data.print_time);
+        });
     }
 
     clearOrders(device) {
         return this.request('cleansqs',
             {
-                sn: device.sn
+                sn: device.sn()
             },
             {method: 'delete'}
-        );
+        ).then(data => {
+            return {
+                done: true,
+                cleared: data.cleannum
+            };
+        });
     }
 
     queryOrderCount(device, order) {
+        const date = order.date();
         return this.request('order/number',
             {
-                sn: device.sn,
-                date: order.date
+                sn: device.sn(),
+                date: date
             },
             {method: 'get'}
-        );
+        ).then(data => {
+            return {
+                date: date,
+                printed: data.number,
+                waiting: data.waiting
+            };
+        });
     }
 }
 
