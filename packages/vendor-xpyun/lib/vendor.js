@@ -1,7 +1,7 @@
 const CloudCore = require('@xesam/cloud-core');
 const BASE_URL = 'https://open.xpyun.net/api/openapi/xprinter/';
 
-class Printer extends CloudCore.Printer {
+class Printer extends CloudCore.CloudApi {
 
     constructor() {
         super(...arguments);

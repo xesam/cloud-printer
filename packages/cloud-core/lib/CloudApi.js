@@ -1,6 +1,6 @@
 const utils = require('./utils');
 
-class Printer {
+class CloudApi {
     constructor(auth, cloud) {
         this._auth = auth;
         this._cloud = cloud;
@@ -15,4 +15,4 @@ class Printer {
     }
 }
 
-module.exports = Printer;
+module.exports = CloudApi;
