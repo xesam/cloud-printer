@@ -109,11 +109,10 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    _printOrder(api, device, order) {
+    _printOrder(api, device, order, orderConfig) {
         const payload = {
             sn: device.sn(),
-            content: order.content(),
-            copies: order.copies()
+            content: order.content()
         };
         if (order.expired()) {
             const nowSeconds = Math.floor(Date.now() / 1000);
@@ -123,20 +122,20 @@ class Printer extends CloudCore.CloudApi {
                 payload.expiresIn = expiresIn;
             }
         }
-        if (order.copies()) {
-            payload.copies = order.copies();
+        if (orderConfig) {
+            payload.copies = orderConfig.copies() || 1;
         }
         return this.request(api, payload).then(data => {
             return order.clone().id(data);
         });
     }
 
-    printMsgOrder(device, order) {
-        return this._printOrder('print', device, order);
+    printMsgOrder(device, order, orderConfig) {
+        return this._printOrder('print', device, order, orderConfig);
     }
 
-    printLabelOrder(device, order) {
-        return this._printOrder('printLabel', device, order);
+    printLabelOrder(device, order, orderConfig) {
+        return this._printOrder('printLabel', device, order, orderConfig);
     }
 
     queryOrder(order) {
@@ -157,8 +156,8 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    queryOrderCount(device, order) {
-        const date = order.date();
+    queryOrderCount(device, orderConfig) {
+        const date = orderConfig.date();
         return this.request('queryOrderStatis', {
             sn: device.sn(),
             date: date

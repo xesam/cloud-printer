@@ -108,13 +108,17 @@ class Printer extends CloudCore.CloudApi {
     /**
      * 发过来的打印订单会缓存48小时，超时没有打印的订单将会自动清空
      * */
-    printMsgOrder(device, order) {
-        return this.request('print',
-            {
-                sn: device.sn(),
-                content: order.content(),
-                times: order.copies()
-            },
+    printMsgOrder(device, order, orderConfig) {
+        const payload = {
+            sn: device.sn(),
+            content: order.content()
+        };
+        if (orderConfig) {
+            payload.times = orderConfig.copies() || 1;
+        }
+        return this.request(
+            'print',
+            payload,
             {method: 'post'}
         ).then(data => {
             return order.clone().id(data.id).createTime(data.create_time);
@@ -154,8 +158,8 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    queryOrderCount(device, order) {
-        const date = order.date();
+    queryOrderCount(device, order, orderConfig) {
+        const date = orderConfig.date();
         return this.request('order/number',
             {
                 sn: device.sn(),

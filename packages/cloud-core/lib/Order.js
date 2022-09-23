@@ -17,14 +17,6 @@ class Order extends Optional {
         return this._attr.call(this, 'expired', ...arguments);
     }
 
-    copies() {
-        return this._attr.call(this, 'copies', ...arguments);
-    }
-
-    date() {
-        return this._attr.call(this, 'date', ...arguments);
-    }
-
     status() {
         return this._attr.call(this, 'status', ...arguments);
     }
