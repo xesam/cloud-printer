@@ -122,28 +122,29 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    printMsgOrder(device, order) {
-        return this.request(BASE_URL, {
-            apiname: 'Open_printMsg',
+    _printOrder(apiname, device, order) {
+        const payload = {
+            apiname: apiname,
             sn: device.sn(),
-            content: order.content(),
-            expired: order.expired(),
-            times: order.copies()
-        }).then(data => {
+            content: order.content()
+        };
+        if (order.expired()) {
+            payload.expired = Math.floor(Date.now() / 1000);
+        }
+        if (order.copies()) {
+            payload.times = order.copies();
+        }
+        return this.request(BASE_URL, payload).then(data => {
             return order.clone().id(data);
         });
     }
 
+    printMsgOrder(device, order) {
+        return this._printOrder('Open_printMsg', device, order);
+    }
+
     printLabelOrder(device, order) {
-        return this.request(BASE_URL, {
-            apiname: 'Open_printLabelMsg',
-            sn: device.sn(),
-            content: order.content(),
-            expired: order.expired(),
-            times: order.copies()
-        }).then(data => {
-            return order.clone().id(data);
-        });
+        return this._printOrder('Open_printLabelMsg', device, order);
     }
 
     queryOrder(order) {
