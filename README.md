@@ -8,6 +8,26 @@
 
 ## 使用方式
 
+### 安装
+
+以 飞鹅 为例：
+
+node 环境：
+
+```shell script
+npm install @xesam/cloud-node
+npm install @xesam/cloud-vender-feie
+```
+
+小程序环境：
+
+```shell script
+npm install @xesam/cloud-mini
+npm install @xesam/cloud-vender-feie
+```
+
+代码调用：
+
 ```javascript
 const CloudCore = require('@xesam/cloud-core');
 const NodeCloud = require('@xesam/cloud-node');
@@ -15,9 +35,7 @@ const CloudApi = require('@xesam/cloud-vender-feie');
 // const CloudApi = require('@xesam/cloud-vender-spyun');
 // const CloudApi = require('@xesam/cloud-vender-xpyun');
 
-const auth = new CloudCore.Auth('xxx id','xxx secret' );
-const cloud = new NodeCloud();
-const cloudApi = new Printer(auth, cloud);
+const cloudApi = new CloudApi(new CloudCore.CloudAuth('xxx id','xxx secret' ), new NodeCloud());
 const device = new CloudCore.Device()
                     .sn(authJson.p_sn)
                     .key(authJson.p_key)
