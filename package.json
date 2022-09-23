@@ -19,12 +19,15 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/xesam/cloud-printer/issues"
   },
   "homepage": "https://github.com/xesam/cloud-printer#readme",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
