@@ -26,8 +26,5 @@
   "homepage": "https://github.com/xesam/cloud-printer#readme",
   "workspaces": [
     "packages/*"
-  ],
-  "publishConfig": {
-    "access": "public"
-  }
+  ]
 }
