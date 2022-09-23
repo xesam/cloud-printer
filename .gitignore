@@ -3,7 +3,6 @@ dist
 .vscode
 .idea
 *.iml
-package-lock.json
 *.json5
 .npmrc
 lerna-debug.log

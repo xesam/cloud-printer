@@ -1,0 +1,13 @@
+pages*
+module*
+app*
+test
+__tests__
+project.config.json
+package-lock.json
+node_modules
+miniprogram_npm
+sitemap.json
+.idea
+*.iml
+*.private.json
