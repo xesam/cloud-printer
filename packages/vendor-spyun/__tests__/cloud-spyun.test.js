@@ -3,7 +3,7 @@ const NodeCloud = require('@xesam/cloud-node');
 const Printer = require('../lib/index');
 const authJson = require('./auth.private.json');
 
-const auth = new CloudCore.Auth(authJson.id, authJson.secret);
+const auth = new CloudCore.CloudAuth(authJson.id, authJson.secret);
 const cloud = new NodeCloud();
 const p = new Printer(auth, cloud);
 const device = new CloudCore.Device().sn(authJson.p_sn).key(authJson.p_key).name('WH-YK-003');

@@ -1,4 +1,4 @@
-class Auth {
+class CloudAuth {
     constructor(id, secret) {
         this._id = id;
         this._secret = secret;
@@ -13,4 +13,4 @@ class Auth {
     }
 }
 
-module.exports = Auth;
+module.exports = CloudAuth;
