@@ -1,2 +1,2 @@
 exports.PENDING = 0;
-exports.DONE = 1;
+exports.PRINTED = 1;
