@@ -44,3 +44,7 @@ const device = new CloudCore.Device()
 cloudApi.addPrinters([device]).then(JSON.stringify).then(console.log).catch(console.error);
 ```
 
+## ChangeLogs
+
+### 0.0.2
+1. 接口命名方式修改；
