@@ -1,7 +1,7 @@
 {
   "name": "@xesam/cloud-mini",
   "version": "0.0.1",
-  "description": "> TODO: description",
+  "description": "cloud printer spi/weapp",
   "author": "xesam <xesamguo@gmail.com>",
   "homepage": "https://github.com/xesam/cloud-printer/tree/main/packages/cloud-mini#readme",
   "license": "ISC",
