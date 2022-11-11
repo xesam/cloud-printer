@@ -27,14 +27,6 @@ class Optional {
     entries() {
         return utils.cloudEntries(this._data);
     }
-
-    toString() {
-        return this._data;
-    }
-
-    toJSON() {
-        return this._data;
-    }
 }
 
 module.exports = Optional;

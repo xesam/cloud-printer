@@ -142,7 +142,7 @@ class Printer extends CloudCore.CloudApi {
         return this.request('queryOrderState', {
             orderId: order.id()
         }).then(data => {
-            return order.clone().status(data ? CloudCore.OrderStatus.PRINTED : CloudCore.OrderStatus.PENDING);
+            return order.clone().status(data ? CloudCore.OrderStatus.PRINTED : CloudCore.OrderStatus.WAITING);
         });
     }
 
