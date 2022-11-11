@@ -1,7 +1,7 @@
 const CloudCore = require('@xesam/cloud-core');
 const BASE_URL = 'https://open.spyun.net/v1/printer/';
 
-class Printer extends CloudCore.CloudApi {
+class Cloud extends CloudCore.CloudApi {
 
     constructor() {
         super(...arguments);
@@ -32,7 +32,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    addPrinters(devices) {
+    addDevice(devices) {
         const device = devices[0];
         return this.request(
             'add',
@@ -47,7 +47,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    deletePrinters(devices) {
+    deleteDevice(devices) {
         const device = devices[0];
         return this.request(
             'delete',
@@ -60,7 +60,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    updatePrinter(device) {
+    updateDevice(device) {
         return this.request(
             'update',
             {
@@ -73,7 +73,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    queryPrinter(device) {
+    queryDevice(device) {
         return this.request(
             'info',
             {
@@ -92,7 +92,7 @@ class Printer extends CloudCore.CloudApi {
         })
     }
 
-    settingPrinter(device) {
+    settingDevice(device) {
         return this.request('setting',
             {
                 sn: device.sn(),
@@ -176,4 +176,4 @@ class Printer extends CloudCore.CloudApi {
     }
 }
 
-module.exports = Printer;
+module.exports = Cloud;

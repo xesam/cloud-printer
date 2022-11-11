@@ -1,7 +1,7 @@
 const CloudCore = require('@xesam/cloud-core');
 const BASE_URL = 'https://api.feieyun.cn/Api/Open/';
 
-class Printer extends CloudCore.CloudApi {
+class Cloud extends CloudCore.CloudApi {
 
     constructor() {
         super(...arguments);
@@ -30,7 +30,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    addPrinters(devices) {
+    addDevice(devices) {
         const content = devices.map(device => {
             return `${device.sn()}#${device.key()}#${device.name() || ''}#${device.cardno() || ''}`;
         }).join('\n');
@@ -64,7 +64,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    deletePrinters(devices) {
+    deleteDevice(devices) {
         const content = devices.map(device => {
             return `${device.sn()}`;
         }).join('-');
@@ -87,7 +87,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    updatePrinter(device) {
+    updateDevice(device) {
         return this.request(BASE_URL, {
             apiname: 'Open_printerEdit',
             sn: device.sn(),
@@ -98,7 +98,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    queryPrinter(device) {
+    queryDevice(device) {
         return this.request(BASE_URL, {
             apiname: 'Open_queryPrinterStatus',
             sn: device.sn()
@@ -116,9 +116,9 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    settingPrinter(device) {
+    settingDevice(device) {
         return Promise.reject({
-            msg: 'feie 不支持 settingPrinter'
+            msg: 'feie 不支持 settingDevice'
         });
     }
 
@@ -183,4 +183,4 @@ class Printer extends CloudCore.CloudApi {
     }
 }
 
-module.exports = Printer;
+module.exports = Cloud;

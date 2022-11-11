@@ -1,7 +1,7 @@
 const CloudCore = require('@xesam/cloud-core');
 const BASE_URL = 'https://open.xpyun.net/api/openapi/xprinter/';
 
-class Printer extends CloudCore.CloudApi {
+class Cloud extends CloudCore.CloudApi {
 
     constructor() {
         super(...arguments);
@@ -29,7 +29,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    addPrinters(devices) {
+    addDevice(devices) {
         return this.request('addPrinters', {
             items: devices.map(device => {
                 return {
@@ -53,7 +53,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    deletePrinters(devices) {
+    deleteDevice(devices) {
         return this.request('delPrinters', {
             snlist: devices.map(device => device.sn())
         }).then(data => {
@@ -72,7 +72,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    updatePrinter(device) {
+    updateDevice(device) {
         return this.request('updPrinter', {
             sn: device.sn(),
             name: device.name(),
@@ -82,7 +82,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    queryPrinter(device) {
+    queryDevice(device) {
         return this.request('queryPrinterStatus', {
             sn: device.sn()
         }).then(data => {
@@ -99,7 +99,7 @@ class Printer extends CloudCore.CloudApi {
         });
     }
 
-    settingPrinter(device) {
+    settingDevice(device) {
         return this.request('setVoiceType', {
             sn: device.sn(),
             voiceType: device.voice(),
@@ -171,4 +171,4 @@ class Printer extends CloudCore.CloudApi {
     }
 }
 
-module.exports = Printer;
+module.exports = Cloud;

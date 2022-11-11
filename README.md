@@ -41,7 +41,7 @@ const device = new CloudCore.Device()
                     .key(authJson.p_key)
                     .name('device name');
 
-cloudApi.addPrinters([device]).then(JSON.stringify).then(console.log).catch(console.error);
+cloudApi.addDevice([device]).then(JSON.stringify).then(console.log).catch(console.error);
 ```
 
 ## ChangeLogs
