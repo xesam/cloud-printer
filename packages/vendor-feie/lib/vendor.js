@@ -41,7 +41,10 @@ class Cloud extends CloudCore.CloudApi {
             apiname: 'Open_printerAddlist',
             printerContent: content
         }).then(data => {
-            const result = {};
+            const result = {
+                success: [],
+                fail: []
+            };
             if (data.ok) {
                 result.success = data.ok.map(ele => {
                     const [sn, key, name, cardno] = ele.split('#').map(attr => attr.trim());
@@ -55,7 +58,7 @@ class Cloud extends CloudCore.CloudApi {
                     const cardnoMatched = _.match(/^\d+/);
                     if (cardnoMatched) {
                         const cardno = cardnoMatched[0];
-                        const error = _.replace(cardno, '');
+                        const error = _.replace(cardno, '').replace(/\s+/, '');
                         outDevice.cardno(cardno).error(error);
                     } else {
                         outDevice.error(_);
@@ -78,7 +81,10 @@ class Cloud extends CloudCore.CloudApi {
             apiname: 'Open_printerDelList',
             snlist: content
         }).then(data => {
-            const result = {};
+            const result = {
+                success: [],
+                fail: []
+            };
             if (data.ok) {
                 result.success = data.ok.map(ele => {
                     return new CloudCore.Device().sn(ele.match(/^\d+/)[0]);
@@ -86,7 +92,9 @@ class Cloud extends CloudCore.CloudApi {
             }
             if (data.no) {
                 result.fail = data.no.map(ele => {
-                    return new CloudCore.Device().sn(ele.match(/^\d+/)[0]);
+                    const sn = ele.match(/^\d+/)[0];
+                    const error = ele.replace(sn, '');
+                    return new CloudCore.Device().sn(sn).error(error);
                 });
             }
             return result;
