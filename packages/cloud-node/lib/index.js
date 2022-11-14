@@ -2,7 +2,7 @@ const axios = require('axios');
 const Signer = require('./Signer');
 const qs = require('querystring');
 
-class Cloud {
+class CloudClient {
     constructor() {
         this._service = axios.create();
     }
@@ -35,5 +35,5 @@ class Cloud {
     }
 }
 
-module.exports = Cloud;
+module.exports = CloudClient;
 

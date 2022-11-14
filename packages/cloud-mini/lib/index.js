@@ -10,7 +10,7 @@ const qs = {
     }
 }
 
-class Cloud {
+class CloudClient {
     constructor() {
         this._service = request.create();
     }
@@ -43,5 +43,5 @@ class Cloud {
     }
 }
 
-module.exports = Cloud;
+module.exports = CloudClient;
 

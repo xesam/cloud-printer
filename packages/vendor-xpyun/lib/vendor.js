@@ -11,8 +11,8 @@ class Cloud extends CloudCore.CloudApi {
         payload = this.cloudEntries(payload);
         payload.timestamp = this.nowSeconds();
         payload.user = this._auth.id();
-        payload.sign = this._cloud.getSigner().SHA1(this._auth.id() + this._auth.secret() + payload.timestamp);
-        return this._cloud.request(
+        payload.sign = this._cloudClient.getSigner().SHA1(this._auth.id() + this._auth.secret() + payload.timestamp);
+        return this._cloudClient.request(
             BASE_URL + url,
             payload,
             {

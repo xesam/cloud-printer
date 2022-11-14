@@ -1,9 +1,9 @@
 const utils = require('./utils');
 
 class CloudApi {
-    constructor(auth, cloud) {
+    constructor(auth, cloudClient) {
         this._auth = auth;
-        this._cloud = cloud;
+        this._cloudClient = cloudClient;
     }
 
     nowSeconds() {

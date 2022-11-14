@@ -17,8 +17,8 @@ class Cloud extends CloudCore.CloudApi {
                 return pair[0] + '=' + pair[1];
             })
             .join('&');
-        payload.sign = this._cloud.getSigner().MD5(`${paramStr}&appsecret=${this._auth.secret()}`);
-        return this._cloud.request(
+        payload.sign = this._cloudClient.getSigner().MD5(`${paramStr}&appsecret=${this._auth.secret()}`);
+        return this._cloudClient.request(
             BASE_URL + url,
             payload,
             config,
