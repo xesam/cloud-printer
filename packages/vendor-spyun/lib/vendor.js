@@ -33,6 +33,11 @@ class Cloud extends CloudCore.CloudApi {
     }
 
     addDevice(devices) {
+        if (Array.isArray(devices)) {
+            console.warn({
+                msg: 'spyun#addDevice 不支持同时操作多个设备，因此，只会添加第一个'
+            });
+        }
         const device = devices[0];
         return this.request(
             'add',
@@ -48,6 +53,11 @@ class Cloud extends CloudCore.CloudApi {
     }
 
     deleteDevice(devices) {
+        if (Array.isArray(devices)) {
+            console.warn({
+                msg: 'spyun#deleteDevice 不支持同时操作多个设备，因此，只会添加第一个'
+            });
+        }
         const device = devices[0];
         return this.request(
             'delete',
@@ -127,7 +137,7 @@ class Cloud extends CloudCore.CloudApi {
 
     printLabelOrder(device, order) {
         return Promise.reject({
-            msg: 'sp 不支持 printLabelOrder'
+            msg: 'spyun 不支持 printLabelOrder'
         });
     }
 

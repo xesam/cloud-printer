@@ -31,6 +31,9 @@ class Cloud extends CloudCore.CloudApi {
     }
 
     addDevice(devices) {
+        if (!Array.isArray(devices)) {
+            devices = Array.of(devices);
+        }
         const content = devices.map(device => {
             return `${device.sn()}#${device.key()}#${device.name() || ''}#${device.cardno() || ''}`;
         }).join('\n');
@@ -65,6 +68,9 @@ class Cloud extends CloudCore.CloudApi {
     }
 
     deleteDevice(devices) {
+        if (!Array.isArray(devices)) {
+            devices = Array.of(devices);
+        }
         const content = devices.map(device => {
             return `${device.sn()}`;
         }).join('-');

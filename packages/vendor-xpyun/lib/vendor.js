@@ -30,6 +30,9 @@ class Cloud extends CloudCore.CloudApi {
     }
 
     addDevice(devices) {
+        if (!Array.isArray(devices)) {
+            devices = Array.of(devices);
+        }
         return this.request('addPrinters', {
             items: devices.map(device => {
                 return {
@@ -54,6 +57,9 @@ class Cloud extends CloudCore.CloudApi {
     }
 
     deleteDevice(devices) {
+        if (!Array.isArray(devices)) {
+            devices = Array.of(devices);
+        }
         return this.request('delPrinters', {
             snlist: devices.map(device => device.sn())
         }).then(data => {

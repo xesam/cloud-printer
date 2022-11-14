@@ -6,7 +6,7 @@ const authJson = require('./auth.private.json');
 const auth = new CloudCore.CloudAuth(authJson.id, authJson.secret);
 const cloud = new NodeCloud();
 const p = new Printer(auth, cloud);
-const device = new CloudCore.Device().sn(authJson.p_sn).key(authJson.p_key).name('WH-YK-003');
+const device = new CloudCore.Device().sn(authJson.p_sn).key(authJson.p_key).name('WH-XPY-5');
 const order = new CloudCore.Order()
     .id('551506419_20220831174524_657954193')
     .content('Hello');
