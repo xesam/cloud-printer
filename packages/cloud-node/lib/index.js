@@ -27,7 +27,7 @@ class CloudClient {
                 params: payload,
                 data: qs.stringify(payload),
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                 },
                 ...config
             });
