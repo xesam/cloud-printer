@@ -13,6 +13,7 @@ const qs = {
 class CloudClient {
     constructor() {
         this._service = request.create();
+        debugger
     }
 
     getSigner() {
