@@ -1,11 +1,5 @@
-# `cloud-mini`
+# 外卖云打印机——小程序支持
 
-> TODO: description
+## 使用方式
 
-## Usage
-
-```
-const cloudMini = require('cloud-mini');
-
-// TODO: DEMONSTRATE API
-```
+参见 [https://github.com/xesam/cloud-printer#readme](https://github.com/xesam/cloud-printer#readme)

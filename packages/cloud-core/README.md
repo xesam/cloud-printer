@@ -1,11 +1,5 @@
-# `cloud-core`
+# 外卖云打印机——接口定义
 
-> TODO: description
+## 使用方式
 
-## Usage
-
-```
-const cloudCore = require('cloud-core');
-
-// TODO: DEMONSTRATE API
-```
+参见 [https://github.com/xesam/cloud-printer#readme](https://github.com/xesam/cloud-printer#readme)

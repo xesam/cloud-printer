@@ -1,11 +1,5 @@
-# `cloud-node`
+# 外卖云打印机——Node支持
 
-> TODO: description
+## 使用方式
 
-## Usage
-
-```
-const cloudNode = require('cloud-node');
-
-// TODO: DEMONSTRATE API
-```
+参见 [https://github.com/xesam/cloud-printer#readme](https://github.com/xesam/cloud-printer#readme)
