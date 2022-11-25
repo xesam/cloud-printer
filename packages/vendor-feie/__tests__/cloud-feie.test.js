@@ -251,7 +251,7 @@ describe("queryDevice", () => {
         });
         cloud.queryDevice(device)
             .then(retDevice => {
-                expect(retDevice.online()).toBeTruthy();
+                expect(retDevice.online()).toBe(true);
                 expect(retDevice.status()).toBe(CloudCore.DeviceStatus.NORMAL);
                 expect(retDevice.error()).toBeUndefined();
                 done();

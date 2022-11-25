@@ -225,7 +225,7 @@ describe("queryDevice", () => {
             .then(retDevice => {
                 expect(retDevice.name()).toBe("name");
                 expect(retDevice.sn()).toBe("123");
-                expect(retDevice.online()).toBeTruthy();
+                expect(retDevice.online()).toBe(true);
                 expect(retDevice.status()).toBe(CloudCore.DeviceStatus.NORMAL);
                 expect(retDevice.voice()).toBe("U");
                 expect(retDevice.cardno()).toBe("xxx");
