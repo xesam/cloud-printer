@@ -33,10 +33,10 @@ class Cloud extends CloudCore.CloudApi {
     }
 
     addDevice(devices) {
-        if (Array.isArray(devices)) {
-            console.warn({
-                msg: 'spyun#addDevice 不支持同时操作多个设备，因此，只会添加第一个'
-            });
+        if (!Array.isArray(devices)) {
+            devices = Array.of(devices);
+        } else {
+            console.warn('spyun#addDevice 不支持同时操作多个设备，因此，只会添加第一个');
         }
         const device = devices[0];
         return this.request(
@@ -48,15 +48,23 @@ class Cloud extends CloudCore.CloudApi {
             },
             {method: 'post'}
         ).then(data => {
-            return {success: [device.clone()]};
+            return {
+                success: [device.clone()],
+                fail: []
+            };
+        }).catch(err => {
+            return {
+                success: [],
+                fail: [device.clone().error(err.errormsg)]
+            };
         });
     }
 
     deleteDevice(devices) {
-        if (Array.isArray(devices)) {
-            console.warn({
-                msg: 'spyun#deleteDevice 不支持同时操作多个设备，因此，只会添加第一个'
-            });
+        if (!Array.isArray(devices)) {
+            devices = Array.of(devices);
+        } else {
+            console.warn('spyun#deleteDevice 不支持同时操作多个设备，因此，只会删除第一个');
         }
         const device = devices[0];
         return this.request(
@@ -66,7 +74,15 @@ class Cloud extends CloudCore.CloudApi {
             },
             {method: 'delete'}
         ).then(data => {
-            return {success: [device.clone()]};
+            return {
+                success: [device.clone()],
+                fail: []
+            };
+        }).catch(err => {
+            return {
+                success: [],
+                fail: [device.clone().error(err.errormsg)]
+            };
         });
     }
 
@@ -106,12 +122,12 @@ class Cloud extends CloudCore.CloudApi {
         return this.request('setting',
             {
                 sn: device.sn(),
-                auto_cut: device.auto_cut(),
+                auto_cut: device.autoCut(),
                 voice: device.voice()
             },
             {method: 'PATCH'}
         ).then(data => {
-            return {success: [device.clone()]};
+            return device.clone();
         });
     }
 
@@ -168,7 +184,7 @@ class Cloud extends CloudCore.CloudApi {
         });
     }
 
-    queryOrderCount(device, order, orderConfig) {
+    queryOrderCount(device, orderConfig) {
         const date = orderConfig.date();
         return this.request('order/number',
             {
@@ -179,8 +195,7 @@ class Cloud extends CloudCore.CloudApi {
         ).then(data => {
             return {
                 date: date,
-                printed: data.number,
-                waiting: data.waiting
+                printed: data.number
             };
         });
     }
