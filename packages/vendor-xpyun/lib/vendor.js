@@ -41,15 +41,18 @@ class Cloud extends CloudCore.CloudApi {
                 }
             })
         }).then(data => {
-            const result = {};
+            const result = {
+                success: [],
+                fail: []
+            };
             if (data.success) {
                 result.success = data.success.map(ele => {
                     return new CloudCore.Device().sn(ele);
                 });
             }
             if (data.fail) {
-                result.fail = data.fail.map(ele => {
-                    return new CloudCore.Device().sn(ele);
+                result.fail = data.fail.map((ele, index) => {
+                    return new CloudCore.Device().sn(ele).error(data.failMsg[index]);
                 });
             }
             return result;
@@ -63,15 +66,18 @@ class Cloud extends CloudCore.CloudApi {
         return this.request('delPrinters', {
             snlist: devices.map(device => device.sn())
         }).then(data => {
-            const result = {};
+            const result = {
+                success: [],
+                fail: []
+            };
             if (data.success) {
                 result.success = data.success.map(ele => {
                     return new CloudCore.Device().sn(ele);
                 });
             }
             if (data.fail) {
-                result.fail = data.fail.map(ele => {
-                    return new CloudCore.Device().sn(ele);
+                result.fail = data.fail.map((ele, index) => {
+                    return new CloudCore.Device().sn(ele).error(data.failMsg[index]);
                 });
             }
             return result;
