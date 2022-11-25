@@ -648,7 +648,7 @@ describe("queryOrderCount", () => {
                 done();
             });
     })
-    test("when query order successfully then return the order detail", done => {
+    test("when query order successfully then return the order detail", () => {
         jest.spyOn(cloudClient, 'request').mockResolvedValue({
             data: {
                 "msg": "ok",
@@ -657,17 +657,14 @@ describe("queryOrderCount", () => {
                 "serverExecutedTime": 1
             }
         });
-        cloud.queryOrderCount(device, orderConfig)
-            .then(ret => {
-                expect(ret).toStrictEqual({
-                    date: '2022-08-31',
-                    printed: 18,
-                    waiting: 0
-                })
-                done();
+        return expect(cloud.queryOrderCount(device, orderConfig))
+            .resolves.toStrictEqual({
+                date: '2022-08-31',
+                printed: 18,
+                waiting: 0
             });
     })
-    test("when query order then catch err", done => {
+    test("when query order then catch err", () => {
         jest.spyOn(cloudClient, 'request').mockResolvedValue({
             data: {
                 "msg": "ORDER_DATE_INVALID",
@@ -676,15 +673,12 @@ describe("queryOrderCount", () => {
                 "serverExecutedTime": 1
             }
         });
-        cloud.queryOrderCount(device, orderConfig)
-            .catch(err => {
-                expect(err).toStrictEqual({
-                    "msg": "ORDER_DATE_INVALID",
-                    "code": 1006,
-                    "data": null,
-                    "serverExecutedTime": 1
-                });
-                done();
+        return expect(cloud.queryOrderCount(device, orderConfig))
+            .rejects.toStrictEqual({
+                "msg": "ORDER_DATE_INVALID",
+                "code": 1006,
+                "data": null,
+                "serverExecutedTime": 1
             });
     })
 })
