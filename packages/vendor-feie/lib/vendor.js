@@ -117,15 +117,20 @@ class Cloud extends CloudCore.CloudApi {
             apiname: 'Open_queryPrinterStatus',
             sn: device.sn()
         }).then(data => {
-            // 0 表示离线
-            // 1 表示在线正常
-            // 2 表示在线异常
-            // 备注：异常一般情况是缺纸，离线的判断是打印机与服务器失去联系超过 30 秒
-            if (data === 0) {
+            // 1、离线。
+            // 2、在线，工作状态正常。
+            // 3、在线，工作状态不正常。
+            // 备注：异常一般是无纸，离线的判断是打印机与服务器失去联系超过2分钟。
+            if (data.startsWith('离线')) {
                 return new CloudCore.Device().online(false);
             } else {
-                return new CloudCore.Device().online(true)
-                    .status(data === 1 ? CloudCore.DeviceStatus.NORMAL : CloudCore.DeviceStatus.ANORMAL);
+                const retDevice = new CloudCore.Device().online(true);
+                if (data.startsWith('在线，工作状态正常')) {
+                    retDevice.status(CloudCore.DeviceStatus.NORMAL);
+                } else {
+                    retDevice.status(CloudCore.DeviceStatus.ANORMAL);
+                }
+                return retDevice;
             }
         });
     }
@@ -181,7 +186,7 @@ class Cloud extends CloudCore.CloudApi {
         });
     }
 
-    queryOrderCount(device, order, orderConfig) {
+    queryOrderCount(device, orderConfig) {
         const date = orderConfig.date();
         return this.request(BASE_URL, {
             apiname: 'Open_queryOrderInfoByDate',
