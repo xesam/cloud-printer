@@ -8,3 +8,4 @@ dist
 lerna-debug.log
 *.private.json
 *.private.js
+package-lock.json
