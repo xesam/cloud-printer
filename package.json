@@ -1,6 +1,6 @@
 {
-  "name": "@xesam/cloud",
-  "version": "0.0.2",
+  "name": "@xesam/cloud-printer",
+  "version": "0.0.1",
   "description": "cloud printer api",
   "main": "index.js",
   "directories": {
@@ -17,7 +17,12 @@
     "jest": "^29.3.1",
     "lerna": "^5.6.2"
   },
-  "keywords": [],
+  "keywords": [
+    "外卖云打印机",
+    "飞鹅",
+    "芯烨",
+    "商鹏"
+  ],
   "author": "xesam",
   "license": "MIT",
   "bugs": {
