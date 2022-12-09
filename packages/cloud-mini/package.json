@@ -22,13 +22,13 @@
     "url": "git+https://github.com/xesam/cloud-printer.git"
   },
   "scripts": {
-    "test": "node ./__tests__/cloud-mini.test.js"
+    "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/xesam/cloud-printer/issues"
   },
   "dependencies": {
-    "@mini-dev/request": "^0.0.6",
+    "@mini-dev/request": "^0.1.0",
     "@xesam/cloud-core": "^0.0.1",
     "crypto-js": "^4.1.1"
   }
