@@ -1,6 +1,6 @@
 {
   "name": "@xesam/cloud-vendor-spyun",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "cloud printer vendor/spyun",
   "keywords": [],
   "author": "xesam <xesamguo@gmail.com>",
@@ -29,11 +29,11 @@
     "url": "https://github.com/xesam/cloud-printer/issues"
   },
   "dependencies": {
-    "@xesam/cloud-core": "^0.0.1"
+    "@xesam/cloud-core": "^0.0.2"
   },
   "devDependencies": {
     "@xesam/cloud-core": "^0.0.1",
-    "@xesam/cloud-mini": "^0.0.1",
-    "@xesam/cloud-node": "^0.0.1"
+    "@xesam/cloud-mini": "^0.0.2",
+    "@xesam/cloud-node": "^0.0.2"
   }
 }
