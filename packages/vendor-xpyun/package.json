@@ -1,6 +1,6 @@
 {
   "name": "@xesam/cloud-vendor-xpyun",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "cloud printer vendor/xpyun",
   "keywords": [],
   "author": "xesam <xesamguo@gmail.com>",
@@ -29,11 +29,11 @@
     "url": "https://github.com/xesam/cloud-printer/issues"
   },
   "dependencies": {
-    "@xesam/cloud-core": "^0.0.2"
+    "@xesam/cloud-core": "^0.0.3"
   },
   "devDependencies": {
     "@xesam/cloud-core": "^0.0.1",
-    "@xesam/cloud-mini": "^0.0.2",
-    "@xesam/cloud-node": "^0.0.2"
+    "@xesam/cloud-mini": "^0.0.3",
+    "@xesam/cloud-node": "^0.0.3"
   }
 }

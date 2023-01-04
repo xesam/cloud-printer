@@ -1,6 +1,6 @@
 {
   "name": "@xesam/cloud-node",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "cloud printer spi/node",
   "author": "xesam <xesamguo@gmail.com>",
   "homepage": "https://github.com/xesam/cloud-printer/tree/main/packages/cloud-node#readme",
@@ -28,7 +28,7 @@
     "url": "https://github.com/xesam/cloud-printer/issues"
   },
   "dependencies": {
-    "@xesam/cloud-core": "^0.0.2",
+    "@xesam/cloud-core": "^0.0.3",
     "axios": "^0.27.2"
   }
 }
