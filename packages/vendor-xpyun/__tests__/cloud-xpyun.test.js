@@ -7,7 +7,7 @@ let cloudClient;
 let cloud;
 let device;
 let order;
-let orderConfig;
+let queryOption;
 
 beforeEach(() => {
     jest.spyOn(Date, 'now').mockReturnValue(1668416270000);
@@ -28,7 +28,7 @@ beforeEach(() => {
         .copies(3)
         .content('Hello');
 
-    orderConfig = new CloudCore.OrderConfig()
+    queryOption = new CloudCore.QueryOption()
         .date('2022-08-31');
 })
 
@@ -635,7 +635,7 @@ describe("queryOrderCount", () => {
                 "serverExecutedTime": 1
             }
         });
-        cloud.queryOrderCount(device, orderConfig)
+        cloud.queryOrderCount(device, queryOption)
             .then(res => {
                 expect(spy.mock.calls[0][0]).toEqual("https://open.xpyun.net/api/openapi/xprinter/queryOrderStatis");
                 expect(spy.mock.calls[0][1]).toStrictEqual({
@@ -659,7 +659,7 @@ describe("queryOrderCount", () => {
                 "serverExecutedTime": 1
             }
         });
-        return expect(cloud.queryOrderCount(device, orderConfig))
+        return expect(cloud.queryOrderCount(device, queryOption))
             .resolves.toStrictEqual({
                 date: '2022-08-31',
                 printed: 18,
@@ -675,7 +675,7 @@ describe("queryOrderCount", () => {
                 "serverExecutedTime": 1
             }
         });
-        return expect(cloud.queryOrderCount(device, orderConfig))
+        return expect(cloud.queryOrderCount(device, queryOption))
             .rejects.toStrictEqual({
                 "msg": "ORDER_DATE_INVALID",
                 "code": 1006,

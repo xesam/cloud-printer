@@ -9,7 +9,7 @@ class Cloud extends CloudCore.CloudApi {
 
     request(url, payload, config) {
         payload = this.cloudEntries(payload);
-        payload.timestamp = this.nowSeconds();
+        payload.timestamp = this.getEpochSecond();
         payload.user = this._auth.id();
         payload.sign = this._cloudClient.getSigner().SHA1(this._auth.id() + this._auth.secret() + payload.timestamp);
         return this._cloudClient.request(
@@ -166,8 +166,8 @@ class Cloud extends CloudCore.CloudApi {
         });
     }
 
-    queryOrderCount(device, orderConfig) {
-        const date = orderConfig.date();
+    queryOrderCount(device, queryOption) {
+        const date = queryOption.date();
         return this.request('queryOrderStatis', {
             sn: device.sn(),
             date: date

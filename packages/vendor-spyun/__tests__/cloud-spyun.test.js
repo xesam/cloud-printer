@@ -7,7 +7,7 @@ let cloudClient;
 let cloud;
 let device;
 let order;
-let orderConfig;
+let queryOption;
 
 beforeEach(() => {
     jest.spyOn(Date, 'now').mockReturnValue(1668416270000);
@@ -27,7 +27,7 @@ beforeEach(() => {
         .copies(3)
         .content('Hello');
 
-    orderConfig = new CloudCore.OrderConfig()
+    queryOption = new CloudCore.QueryOption()
         .date('2022-08-31');
 })
 
@@ -481,7 +481,7 @@ describe("queryOrderCount", () => {
         const spy = jest.spyOn(cloudClient, 'request').mockResolvedValue({
             data: {"errorcode": 0}
         });
-        cloud.queryOrderCount(device, orderConfig)
+        cloud.queryOrderCount(device, queryOption)
             .then(res => {
                 expect(spy.mock.calls[0][0]).toEqual("https://open.spyun.net/v1/printer/order/number");
                 expect(spy.mock.calls[0][1]).toStrictEqual({
@@ -503,7 +503,7 @@ describe("queryOrderCount", () => {
                 "number": 18 // 已打印订单数
             }
         });
-        cloud.queryOrderCount(device, orderConfig)
+        cloud.queryOrderCount(device, queryOption)
             .then(ret => {
                 expect(ret).toStrictEqual({
                     date: '2022-08-31',
@@ -518,7 +518,7 @@ describe("queryOrderCount", () => {
                 "errorcode": -1, "errormsg": "appid为空"
             }
         });
-        cloud.queryOrderCount(device, orderConfig)
+        cloud.queryOrderCount(device, queryOption)
             .catch(err => {
                 expect(err).toStrictEqual({
                     "errorcode": -1, "errormsg": "appid为空"

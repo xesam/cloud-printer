@@ -7,7 +7,7 @@ let cloudClient;
 let cloud;
 let device;
 let order;
-let orderConfig;
+let queryOption;
 
 beforeEach(() => {
     jest.spyOn(Date, 'now').mockReturnValue(1668416270000);
@@ -28,7 +28,7 @@ beforeEach(() => {
         .copies(3)
         .content('Hello');
 
-    orderConfig = new CloudCore.OrderConfig()
+    queryOption = new CloudCore.QueryOption()
         .date('2022-08-31');
 })
 
@@ -559,7 +559,7 @@ describe("queryOrderCount", () => {
                 "serverExecutedTime": 9
             }
         });
-        cloud.queryOrderCount(device, orderConfig)
+        cloud.queryOrderCount(device, queryOption)
             .then(res => {
                 expect(spy.mock.calls[0][0]).toEqual('https://api.feieyun.cn/Api/Open/');
                 expect(spy.mock.calls[0][1]).toStrictEqual({
@@ -584,7 +584,7 @@ describe("queryOrderCount", () => {
                 "serverExecutedTime": 9
             }
         });
-        cloud.queryOrderCount(device, orderConfig)
+        cloud.queryOrderCount(device, queryOption)
             .then(ret => {
                 expect(ret).toStrictEqual({
                     date: '2022-08-31',
@@ -603,7 +603,7 @@ describe("queryOrderCount", () => {
                 "serverExecutedTime": 37
             }
         });
-        cloud.queryOrderCount(device, orderConfig)
+        cloud.queryOrderCount(device, queryOption)
             .catch(err => {
                 expect(err).toStrictEqual({
                     "msg": "参数错误 : 时间格式不正确。",

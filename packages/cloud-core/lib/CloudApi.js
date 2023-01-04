@@ -6,7 +6,7 @@ class CloudApi {
         this._cloudClient = cloudClient;
     }
 
-    nowSeconds() {
+    getEpochSecond() {
         return Math.floor(Date.now() / 1000);
     }
 

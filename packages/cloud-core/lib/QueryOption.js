@@ -1,6 +1,6 @@
 const Optional = require('./Optional');
 
-class OrderConfig extends Optional {
+class QueryOption extends Optional {
     constructor(props) {
         super(props);
     }
@@ -14,4 +14,4 @@ class OrderConfig extends Optional {
     }
 }
 
-module.exports = OrderConfig;
+module.exports = QueryOption;

@@ -10,7 +10,7 @@ class Cloud extends CloudCore.CloudApi {
     request(url, payload, config) {
         payload = this.cloudEntries(payload);
         payload.appid = this._auth.id();
-        payload.timestamp = this.nowSeconds();
+        payload.timestamp = this.getEpochSecond();
         const paramStr = Object.entries(payload)
             .sort(([a], [b]) => a > b ? 1 : -1)
             .map(pair => {
@@ -182,8 +182,8 @@ class Cloud extends CloudCore.CloudApi {
         });
     }
 
-    queryOrderCount(device, orderConfig) {
-        const date = orderConfig.date();
+    queryOrderCount(device, queryOption) {
+        const date = queryOption.date();
         return this.request('order/number',
             {
                 sn: device.sn(),
