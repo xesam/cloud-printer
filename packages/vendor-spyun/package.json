@@ -32,7 +32,7 @@
     "@xesam/cloud-core": "^0.0.3"
   },
   "devDependencies": {
-    "@xesam/cloud-core": "^0.0.1",
+    "@xesam/cloud-core": "^0.0.3",
     "@xesam/cloud-mini": "^0.0.3",
     "@xesam/cloud-node": "^0.0.3"
   }
