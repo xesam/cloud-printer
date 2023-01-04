@@ -24,10 +24,10 @@ beforeEach(() => {
 
     order = new CloudCore.Order()
         .id('order123')
+        .copies(3)
         .content('Hello');
 
     orderConfig = new CloudCore.OrderConfig()
-        .copies(3)
         .date('2022-08-31');
 })
 
@@ -314,9 +314,10 @@ describe("printMsgOrder", () => {
                 expect(spy.mock.calls[0][1]).toStrictEqual({
                     "sn": "123456",
                     "content": 'Hello',
-                    "sign": "CE994FB7CEED9AF898EAAACA4EE77352",
+                    "sign": "C6283BCF24173C14FCB1DE1A4A1623F3",
                     "timestamp": 1668416270,
-                    "appid": 'test'
+                    "appid": 'test',
+                    "times": 3
                 });
                 expect(spy.mock.calls[0][2]).toEqual({"method": "post"});
                 expect(spy.mock.calls[0][3]).toEqual("urlencoded");

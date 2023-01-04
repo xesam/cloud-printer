@@ -29,11 +29,11 @@
     "url": "https://github.com/xesam/cloud-printer/issues"
   },
   "dependencies": {
-    "@xesam/cloud-core": "^0.0.3"
+    "@xesam/cloud-core": "0.0.4"
   },
   "devDependencies": {
-    "@xesam/cloud-core": "^0.0.3",
-    "@xesam/cloud-mini": "^0.0.3",
-    "@xesam/cloud-node": "^0.0.3"
+    "@xesam/cloud-core": "0.0.4",
+    "@xesam/cloud-mini": "0.0.4",
+    "@xesam/cloud-node": "0.0.4"
   }
 }

@@ -134,14 +134,12 @@ class Cloud extends CloudCore.CloudApi {
     /**
      * 发过来的打印订单会缓存48小时，超时没有打印的订单将会自动清空
      * */
-    printMsgOrder(device, order, orderConfig) {
+    printMsgOrder(device, order) {
         const payload = {
             sn: device.sn(),
             content: order.content()
         };
-        if (orderConfig) {
-            payload.times = orderConfig.copies() || 1;
-        }
+        payload.times = order.copies() || 1;
         return this.request(
             'print',
             payload,

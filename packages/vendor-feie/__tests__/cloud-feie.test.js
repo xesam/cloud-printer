@@ -25,10 +25,10 @@ beforeEach(() => {
 
     order = new CloudCore.Order()
         .id('order123')
+        .copies(3)
         .content('Hello');
 
     orderConfig = new CloudCore.OrderConfig()
-        .copies(3)
         .date('2022-08-31');
 })
 
@@ -310,6 +310,7 @@ describe("printMsgOrder", () => {
                     "content": 'Hello',
                     'sig': "e8f57f3afdc83c474b85d98d32c4fc377ea963b3",
                     'stime': 1668416270,
+                    'times': 3,
                     user: 'test'
                 });
                 expect(spy.mock.calls[0][2]).toEqual({"method": "post"});
@@ -374,6 +375,7 @@ describe("printLabelOrder", () => {
                     "content": 'Hello',
                     'sig': "e8f57f3afdc83c474b85d98d32c4fc377ea963b3",
                     'stime': 1668416270,
+                    'times': 3,
                     user: 'test'
                 });
                 expect(spy.mock.calls[0][2]).toEqual({"method": "post"});
